@@ -35,7 +35,7 @@ public class GraphicalUI extends JPanel {
     infects = i;
     resists = r;
     
-    JFrame frame = new JFrame("Project_Graph");
+    JFrame frame = new JFrame("Dengue-Related ABM Epidemic Simulation");
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.getContentPane().add(this);
     frame.pack();

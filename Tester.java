@@ -1,15 +1,8 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package denguesimulation;
 
 import javax.swing.*;
 
-/**
- *
- * @author juliam
- */
 public class Tester {
   public static void main(String[] args) {
     JTextField populationField = new JTextField(5);
@@ -43,7 +36,7 @@ public class Tester {
     five.add(initInfectedPopulationField);
     Box six = Box.createHorizontalBox();
     six.add(Box.createHorizontalStrut(30));
-    six.add(new JLabel("Infection Probability: "));
+    six.add(new JLabel("1 - Infection Probability: "));
     six.add(infectionProbabilityField);
     Box seven = Box.createHorizontalBox();
     seven.add(Box.createHorizontalStrut(49));
@@ -74,20 +67,6 @@ public class Tester {
         rows, columns, initInfectedPopulation, infectionProbability, resistanceRate);
       simulation.simulate();
     } else;
-    /*
-    DengueSimulation simulation = new DengueSimulation(100, 10, 10, 10, 5, 0.8, 2);
-    //int population, int endTime, int rows, int columns, int initInfectedPopulation, double infectionProbability, int resistanceRate
-    
-    //infectionProbability -> each susceptible person checks its neighbors to see who is infected.
-    //  when it finds an infected one, the infected neighbor generates a random probability that it might
-    //  infect said person.  if this randomly generated probability is higher than the infectionProbability,
-    //  the person gets infected
-    
-    //resistanceRate -> how many time steps until an infected person becomes resistant 
-    
-    //for now can only handle population number that are squares, although we should be able to automatically generate
-    //rows and columns later so we won't have to ask for it
-    simulation.simulate();*/
   }
 }
 
