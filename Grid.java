@@ -1,15 +1,8 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package denguesimulation;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author juliam
- */
 public class Grid {
   Person[][] grid;
   int maxRows;
@@ -39,13 +32,13 @@ public class Grid {
     }
   }
   
+  //returns a person's neighbors by looking at the 8 persons surrounding it in the grid
   public ArrayList<Person> getNeighbors(Person person) {
     ArrayList<Person> neighbors = new ArrayList();
     ArrayList<Coordinates> neighborCoordinates = person.getNeightbors();
     
     for(int i=0; i<neighborCoordinates.size(); i++) {
       Coordinates tempCoordinates = neighborCoordinates.get(i);
-      //checks if the coordinates for its neighbors don't go beyond the grid
       if(isValidCoordinates(neighborCoordinates.get(i))) {
         Person neighbor = grid[tempCoordinates.getX()][tempCoordinates.getY()];
         neighbors.add(neighbor);
@@ -54,6 +47,7 @@ public class Grid {
     return neighbors;
   }
   
+  //checks if the coordinates for its neighbors don't go beyond the grid's capacity
   private boolean isValidCoordinates(Coordinates coordinates) {
     int x = coordinates.getX();
     int y = coordinates.getY();
@@ -67,14 +61,17 @@ public class Grid {
     }
   }
   
+  //change state to susceptible(1), infected(2) or resistant(3) 
   public void changeState(int x, int y, int state) {
     grid[x][y].setState(state);
   }
   
+  //returns person at coordinate x, y
   public Person getPerson(int x, int y) {
     return grid[x][y];
   }
   
+  //returns number of susceptible persons
   public int getSusceptibleCount() {
     int susceptibleCount = 0;
     for (int i = 0; i < maxRows; i++) {
@@ -88,7 +85,7 @@ public class Grid {
     return susceptibleCount;
   }
   
-  //returns the coordinates of persons who are infected, for grid update in DengueSimulation
+  //returns the coordinates of persons who are infected
   public ArrayList<Coordinates> getInfectedCoordinates() {
     ArrayList<Coordinates> infected = new ArrayList();
     for (int i = 0; i < maxRows; i++) {
@@ -102,7 +99,7 @@ public class Grid {
     return infected;
   }
   
-  //sets state of persons in given coordinates to infected
+  //sets state of persons in given coordinates to infected(2)
   public void setInfectedCoordinates(ArrayList<Coordinates> infectedCoordinates) {
     for(int i=0; i<infectedCoordinates.size(); i++) {
       Coordinates currCoordinates = infectedCoordinates.get(i);
@@ -112,6 +109,7 @@ public class Grid {
     }
   }
   
+  //returns number of infected persons
   public int getInfectedCount() {
     int infectedCount = 0;
     for (int i = 0; i < maxRows; i++) {
@@ -125,7 +123,7 @@ public class Grid {
     return infectedCount;
   }
   
-  //returns the coordinates of persons who are resistant for grid update in DengueSimulation
+  //returns the coordinates of persons who are resistant 
   public ArrayList<Coordinates> getResistantCoordinates() {
     ArrayList<Coordinates> infected = new ArrayList();
     for (int i = 0; i < maxRows; i++) {
@@ -139,15 +137,17 @@ public class Grid {
     return infected;
   }
   
-  public void setResistantCoordinates(ArrayList<Coordinates> infectedCoordinates) {
-    for(int i=0; i<infectedCoordinates.size(); i++) {
-      Coordinates currCoordinates = infectedCoordinates.get(i);
+  //sets state of persons in given coordinates to resistant(3)
+  public void setResistantCoordinates(ArrayList<Coordinates> resistantCoordinates) {
+    for(int i=0; i<resistantCoordinates.size(); i++) {
+      Coordinates currCoordinates = resistantCoordinates.get(i);
       int x = currCoordinates.getX();
       int y = currCoordinates.getY();
       this.changeState(x, y, 3);
     }
   }
   
+  //returns number of resistant persons
   public int getResistantCount() {
     int resistantCount = 0;
     for (int i = 0; i < maxRows; i++) {
@@ -175,6 +175,7 @@ public class Grid {
     }   
   }
   
+  //displays the grid with each persons's state: 1-susceptible, 2-infected, 3-resistant
   public String display() {
     String display = "";
     for (int i = 0; i < maxRows; i++) {
@@ -184,11 +185,10 @@ public class Grid {
       }
       display += "] \n";
     }
-    
     return display;
   }
   
-  //for debugging purposes
+  //displays the grid containing how many time steps each individual has been at its current state
   public String displayTimes() {
     String display = "";
     for (int i = 0; i < maxRows; i++) {
@@ -198,7 +198,6 @@ public class Grid {
       }
       display += "] \n";
     }
-    
     return display;
   }
 }

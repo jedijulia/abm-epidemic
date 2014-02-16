@@ -1,18 +1,11 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package denguesimulation;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author juliam
- */
 public class Person {
   int state = 1;
-  int currStateTimeStep; //counter for how many time steps a person has been in that current state to keep track of when it should become resistant
+  int currStateTimeStep; //counter for how many time steps a person has been in that current state 
   ArrayList<Coordinates> neighborCoordinates = new ArrayList();
   Coordinates coordinates;
   
@@ -128,7 +121,7 @@ public class Person {
     return currStateTimeStep;
   }
   
-  //for when it changes state like from susceptible to infected
+  //for when the person changes state (e.g. from susceptible to infected)
   public void resetCurrStateTimeStep() {
     currStateTimeStep = 0;
   }
