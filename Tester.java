@@ -64,7 +64,7 @@ public class Tester {
       int resistanceRate = Integer.parseInt(resistanceRateField.getText());
       
       DengueSimulation simulation = new DengueSimulation(population, endTime,
-        rows, columns, initInfectedPopulation, infectionProbability, resistanceRate);
+        rows, columns, initInfectedPopulation, infectionProbability, resistanceRate, 0.1);
       simulation.simulate();
     } else;
   }

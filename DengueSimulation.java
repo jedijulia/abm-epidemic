@@ -9,11 +9,12 @@ public class DengueSimulation {
   int endTime;
   int initInfectedPopulation;
   double infectionProbability;
+  double reservoirProbability;
   int resistanceRate;
   Grid prevGrid;
   Grid currGrid;
   
-  public DengueSimulation(int population, int endTime, int rows, int columns, int initInfectedPopulation, double infectionProbability, int resistanceRate) {
+  public DengueSimulation(int population, int endTime, int rows, int columns, int initInfectedPopulation, double infectionProbability, int resistanceRate, double reservoirProbability) {
     this.population = population;
     this.endTime = endTime;
     this.prevGrid = new Grid(rows, columns);
@@ -21,6 +22,7 @@ public class DengueSimulation {
     this.initInfectedPopulation = initInfectedPopulation;
     this.infectionProbability = infectionProbability; 
     this.resistanceRate = resistanceRate;
+    this.reservoirProbability = reservoirProbability;
     this.initialize();
   }
   
