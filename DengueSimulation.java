@@ -98,7 +98,7 @@ public class DengueSimulation {
       currTime++;
     }
     GraphicalUI graph = new GraphicalUI(population, susceptibleCounts, infectedCounts, resistantCounts);
-  }
+  }  
   
   //checks neighbors and returns true if person will be infected
   public boolean willBeInfected(Person person) {
@@ -115,6 +115,12 @@ public class DengueSimulation {
           return true;
         }
       }
+    }
+    //generates random probability to check if it will be infected from the reservoir
+    //if generated probability is less than reservoir probability, the person is infected
+    double randomProbForRes = Math.random() * 1;
+    if(randomProbForRes < reservoirProbability) {
+        return true;
     }
     return false;
   }
