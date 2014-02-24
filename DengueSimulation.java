@@ -9,8 +9,8 @@ public class DengueSimulation {
   int endTime;
   int initInfectedPopulation;
   double infectionProbability;
-  double reservoirProbability;
   int resistanceRate;
+  double reservoirProbability;
   Grid prevGrid;
   Grid currGrid;
   
@@ -44,6 +44,8 @@ public class DengueSimulation {
     int[] infectedCounts = new int[endTime];
     int[] resistantCounts = new int[endTime];
     
+    //System.out.println("INITIAL GRID");
+    //System.out.println(prevGrid.display());
     //loops through each time step
     while(currTime != endTime) {
       ArrayList<Coordinates> changedPersons = new ArrayList();
@@ -61,6 +63,8 @@ public class DengueSimulation {
               currGrid.changeState(i, j, 2);
               //added to changedPersons arraylist for the purpose of moving contents to prevGrid later on
               changedPersons.add(currCoordinates);
+              //System.out.println("GRID UPDATE FOR PERSON" + currCoordinates.getX() + currCoordinates.getY());
+              //System.out.println(currGrid.display());
             }
           } 
           
@@ -86,6 +90,9 @@ public class DengueSimulation {
       prevGrid.setResistantCoordinates(resistantCoordinates);      
       prevGrid.updateTimes(changedPersons);
       
+      //System.out.println("FINAL GRID AT CURRENT TIME");
+      //System.out.println(currGrid.display());
+      
       //retrieves the number of susceptible, infected and resistant persons
       int susceptibleC = currGrid.getSusceptibleCount();
       int infectedC = currGrid.getInfectedCount();
@@ -110,8 +117,9 @@ public class DengueSimulation {
         double randomProbability = Math.random() * 1;
         //if probability is greater than the probability for infection, person becomes infected
         if(randomProbability > infectionProbability) {
-          Person neighbor = neighbors.get(i);
-          Coordinates nc = neighbor.getCoordinates();
+          //Person neighbor = neighbors.get(i);
+          //Coordinates nc = neighbor.getCoordinates();
+          //System.out.println("PERSON WHO INFECTED " + nc.getX() + " " + nc.getY());
           return true;
         }
       }
@@ -120,6 +128,7 @@ public class DengueSimulation {
     //if generated probability is less than reservoir probability, the person is infected
     double randomProbForRes = Math.random() * 1;
     if(randomProbForRes < reservoirProbability) {
+        //System.out.println("RESERVOIR INFECTED because my random probability was " + randomProbForRes);
         return true;
     }
     return false;
