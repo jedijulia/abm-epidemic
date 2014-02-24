@@ -12,6 +12,7 @@ public class Tester {
     JTextField initInfectedPopulationField = new JTextField(5);
     JTextField infectionProbabilityField = new JTextField(5);
     JTextField resistanceRateField = new JTextField(5);
+    JTextField reservoirProbabilityField = new JTextField(5);
     
     JPanel panel = new JPanel();
     Box box = Box.createVerticalBox();
@@ -42,6 +43,11 @@ public class Tester {
     seven.add(Box.createHorizontalStrut(49));
     seven.add(new JLabel("Resistance Rate: "));
     seven.add(resistanceRateField);
+    Box eight = Box.createHorizontalBox();
+    eight.add(Box.createHorizontalStrut(30));
+    eight.add(new JLabel("Reservoir Probability: "));
+    eight.add(reservoirProbabilityField);
+      
     box.add(one);
     box.add(two);
     box.add(three);
@@ -49,6 +55,7 @@ public class Tester {
     box.add(five);
     box.add(six);
     box.add(seven);
+    box.add(eight);
     panel.add(box);
     
     int result = JOptionPane.showConfirmDialog(null, panel,
@@ -62,9 +69,10 @@ public class Tester {
       int initInfectedPopulation = Integer.parseInt(initInfectedPopulationField.getText());
       double infectionProbability = Double.parseDouble(infectionProbabilityField.getText());
       int resistanceRate = Integer.parseInt(resistanceRateField.getText());
+      double reservoirProbability = Double.parseDouble(reservoirProbabilityField.getText());
       
       DengueSimulation simulation = new DengueSimulation(population, endTime,
-        rows, columns, initInfectedPopulation, infectionProbability, resistanceRate, 0.1);
+        rows, columns, initInfectedPopulation, infectionProbability, resistanceRate, reservoirProbability);
       simulation.simulate();
     } else;
   }
