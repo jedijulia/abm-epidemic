@@ -26,6 +26,17 @@ public class DengueSimulation {
     this.initialize();
   }
   
+  public DengueSimulation(int population, int endTime, int initInfectedPopulation, double infectionProbability, int resistanceRate, double reservoirProbability) {
+    this.population = population;
+    this.endTime = endTime;
+    this.prevGrid = new Grid(population);
+    this.initInfectedPopulation = initInfectedPopulation;
+    this.infectionProbability = infectionProbability; 
+    this.resistanceRate = resistanceRate;
+    this.reservoirProbability = reservoirProbability;
+    this.initialize();
+  }
+  
   //chooses random persons to be the initially infected members of the population
   public void initialize(){
     for(int i = 0; i < initInfectedPopulation; i++) {
