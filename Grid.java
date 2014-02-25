@@ -15,6 +15,28 @@ public class Grid {
     initialize();
   }
   
+  public Grid(int population) {
+    int[] dimensions = getDimensions(population);
+    int rows = dimensions[0];
+    int columns = dimensions[1];
+    grid = new Person[rows][columns];
+    maxRows = rows;
+    maxColumns = columns;
+    initialize();
+  }
+  
+  private int[] getDimensions(int population) {
+      double squareRoot = Math.sqrt(population);
+      int[] dimensions = new int[2];
+      if (squareRoot == Math.floor(squareRoot)) {
+          dimensions[0] = (int)squareRoot;
+          dimensions[1] = (int)squareRoot;
+      } else {
+          //nothing for now
+      }
+      return dimensions;
+  }
+  
   public int getMaxRows() {
     return maxRows;
   }
