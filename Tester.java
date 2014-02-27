@@ -1,9 +1,13 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
 
 package denguesimulation;
 
 import javax.swing.*;
 
-public class Tester{
+public class Tester {
   public static void main(String[] args) {
     JTextField populationField = new JTextField(5);
     JTextField endTimeField = new JTextField(5);
@@ -22,28 +26,28 @@ public class Tester{
     two.add(Box.createHorizontalStrut(90));
     two.add(new JLabel("End Time: "));
     two.add(endTimeField);
+    Box three = Box.createHorizontalBox();
+    three.add(new JLabel("Initial Infected Population: "));
+    three.add(initInfectedPopulationField);
+    Box four = Box.createHorizontalBox();
+    four.add(Box.createHorizontalStrut(30));
+    four.add(new JLabel("1 - Infection Probability: "));
+    four.add(infectionProbabilityField);
     Box five = Box.createHorizontalBox();
-    five.add(new JLabel("Initial Infected Population: "));
-    five.add(initInfectedPopulationField);
+    five.add(Box.createHorizontalStrut(49));
+    five.add(new JLabel("Resistance Rate: "));
+    five.add(resistanceRateField);
     Box six = Box.createHorizontalBox();
     six.add(Box.createHorizontalStrut(30));
-    six.add(new JLabel("1 - Infection Probability: "));
-    six.add(infectionProbabilityField);
-    Box seven = Box.createHorizontalBox();
-    seven.add(Box.createHorizontalStrut(49));
-    seven.add(new JLabel("Resistance Rate: "));
-    seven.add(resistanceRateField);
-    Box eight = Box.createHorizontalBox();
-    eight.add(Box.createHorizontalStrut(30));
-    eight.add(new JLabel("Reservoir Probability: "));
-    eight.add(reservoirProbabilityField);
+    six.add(new JLabel("Reservoir Probability: "));
+    six.add(reservoirProbabilityField);
       
     box.add(one);
     box.add(two);
+    box.add(three);
+    box.add(four);
     box.add(five);
     box.add(six);
-    box.add(seven);
-    box.add(eight);
     panel.add(box);
     
     int result = JOptionPane.showConfirmDialog(null, panel,
@@ -62,4 +66,5 @@ public class Tester{
     } else;
   }
 }
+
 
