@@ -14,18 +14,6 @@ public class DengueSimulation {
   Grid prevGrid;
   Grid currGrid;
   
-  public DengueSimulation(int population, int endTime, int rows, int columns, int initInfectedPopulation, double infectionProbability, int resistanceRate, double reservoirProbability) {
-    this.population = population;
-    this.endTime = endTime;
-    this.prevGrid = new Grid(rows, columns);
-    this.currGrid = new Grid(rows, columns);
-    this.initInfectedPopulation = initInfectedPopulation;
-    this.infectionProbability = infectionProbability; 
-    this.resistanceRate = resistanceRate;
-    this.reservoirProbability = reservoirProbability;
-    this.initialize();
-  }
-  
   public DengueSimulation(int population, int endTime, int initInfectedPopulation, double infectionProbability, int resistanceRate, double reservoirProbability) {
     this.population = population;
     this.endTime = endTime;

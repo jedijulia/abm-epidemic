@@ -8,13 +8,6 @@ public class Grid {
   int maxRows;
   int maxColumns;
   
-  public Grid(int rows, int columns) {
-    grid = new Person[rows][columns];
-    maxRows = rows;
-    maxColumns = columns;
-    initialize();
-  }
-  
   public Grid(int population) {
     int[] dimensions = getDimensions(population);
     int rows = dimensions[0];
