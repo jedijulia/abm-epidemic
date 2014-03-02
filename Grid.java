@@ -23,7 +23,8 @@ public class Grid {
           dimensions[0] = (int)squareRoot;
           dimensions[1] = (int)squareRoot;
       } else {
-          //nothing for now
+          dimensions[0] = (int)Math.ceil(squareRoot);
+          dimensions[1] = (int)Math.ceil(squareRoot);
       }
       return dimensions;
   }
