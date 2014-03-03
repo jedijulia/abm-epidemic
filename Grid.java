@@ -10,8 +10,8 @@ public class Grid {
   
   public Grid(int population) {
     int[] dimensions = getDimensions(population);
-    int maxRows = dimensions[0];
-    int maxColumns = dimensions[1];
+    maxRows = dimensions[0];
+    maxColumns = dimensions[1];
     grid = new Person[maxRows][maxColumns];
     initialize();
   }
@@ -39,9 +39,12 @@ public class Grid {
   
   //fill grid up with persons
   public void initialize(){
+    //int counter = 0;
     for (int i = 0; i < maxRows; i++) {
       for (int j = 0; j < maxColumns; j++) {
+        //Person p = new Person(i, j);
         grid[i][j] = new Person(i, j);
+        //counter++;
       }
     }
   }
