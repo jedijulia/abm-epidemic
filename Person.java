@@ -93,6 +93,14 @@ public class Person {
     return state;
   }
   
+  public boolean isExcluded() {
+      if(state == 0) {
+          return true;
+      } else {
+          return false;
+      }
+  }
+  
   public boolean isSusceptible() {
     if(state == 1) {
       return true;
