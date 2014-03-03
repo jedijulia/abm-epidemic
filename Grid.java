@@ -13,7 +13,7 @@ public class Grid {
     maxRows = dimensions[0];
     maxColumns = dimensions[1];
     grid = new Person[maxRows][maxColumns];
-    initialize();
+    initialize(population);
   }
   
   private int[] getDimensions(int population) {
@@ -38,13 +38,16 @@ public class Grid {
   }
   
   //fill grid up with persons
-  public void initialize(){
-    //int counter = 0;
+  public void initialize(int population){
+    int counter = 0;
     for (int i = 0; i < maxRows; i++) {
       for (int j = 0; j < maxColumns; j++) {
-        //Person p = new Person(i, j);
-        grid[i][j] = new Person(i, j);
-        //counter++;
+        Person p = new Person(i, j);
+        grid[i][j] = p;
+        if(counter >= population) {
+            p.setState(0);
+        }
+        counter++;
       }
     }
   }
