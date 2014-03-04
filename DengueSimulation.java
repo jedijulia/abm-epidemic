@@ -32,8 +32,12 @@ public class DengueSimulation {
       Random generator = new Random();
       int x = generator.nextInt(prevGrid.getMaxRows());
       int y = generator.nextInt(prevGrid.getMaxRows());
-      prevGrid.changeState(x, y, 2);
-      currGrid.changeState(x, y, 2);
+      if(!currGrid.getPerson(x, y).isExcluded()) {
+        prevGrid.changeState(x, y, 2);
+        currGrid.changeState(x, y, 2);
+      } else {
+          i--;
+      }
     }
   }
   
@@ -44,8 +48,8 @@ public class DengueSimulation {
     int[] infectedCounts = new int[endTime];
     int[] resistantCounts = new int[endTime];
     
-    //System.out.println("INITIAL GRID");
-    //System.out.println(prevGrid.display());
+    System.out.println("INITIAL GRID");
+    System.out.println(prevGrid.display());
     //loops through each time step
     while(currTime != endTime) {
       ArrayList<Coordinates> changedPersons = new ArrayList();
@@ -63,8 +67,8 @@ public class DengueSimulation {
               currGrid.changeState(i, j, 2);
               //added to changedPersons arraylist for the purpose of moving contents to prevGrid later on
               changedPersons.add(currCoordinates);
-              //System.out.println("GRID UPDATE FOR PERSON" + currCoordinates.getX() + currCoordinates.getY());
-              //System.out.println(currGrid.display());
+              System.out.println("GRID UPDATE FOR PERSON" + currCoordinates.getX() + currCoordinates.getY());
+              System.out.println(currGrid.display());
             }
           } 
           
@@ -90,8 +94,8 @@ public class DengueSimulation {
       prevGrid.setResistantCoordinates(resistantCoordinates);      
       prevGrid.updateTimes(changedPersons);
       
-      //System.out.println("FINAL GRID AT CURRENT TIME");
-      //System.out.println(currGrid.display());
+      System.out.println("FINAL GRID AT CURRENT TIME");
+      System.out.println(currGrid.display());
       
       //retrieves the number of susceptible, infected and resistant persons
       int susceptibleC = currGrid.getSusceptibleCount();
@@ -117,9 +121,9 @@ public class DengueSimulation {
         double randomProbability = Math.random() * 1;
         //if probability is greater than the probability for infection, person becomes infected
         if(randomProbability > infectionProbability) {
-          //Person neighbor = neighbors.get(i);
-          //Coordinates nc = neighbor.getCoordinates();
-          //System.out.println("PERSON WHO INFECTED " + nc.getX() + " " + nc.getY());
+          Person neighbor = neighbors.get(i);
+          Coordinates nc = neighbor.getCoordinates();
+          System.out.println("PERSON WHO INFECTED " + nc.getX() + " " + nc.getY());
           return true;
         }
       }
