@@ -20,7 +20,7 @@ public class DengueSimulation {
     this.prevGrid = new Grid(population);
     this.currGrid = new Grid(population);
     this.initInfectedPopulation = initInfectedPopulation;
-    this.infectionProbability = infectionProbability; 
+    this.infectionProbability = 1 - infectionProbability; 
     this.resistanceRate = resistanceRate;
     this.reservoirProbability = reservoirProbability;
     this.initialize();
