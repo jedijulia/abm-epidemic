@@ -31,7 +31,7 @@ public class Tester {
     three.add(initInfectedPopulationField);
     Box four = Box.createHorizontalBox();
     four.add(Box.createHorizontalStrut(30));
-    four.add(new JLabel("1 - Infection Probability: "));
+    four.add(new JLabel("Infection Probability: "));
     four.add(infectionProbabilityField);
     Box five = Box.createHorizontalBox();
     five.add(Box.createHorizontalStrut(49));
