@@ -49,7 +49,7 @@ public class GraphicalUI extends JPanel {
       g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
       double xScale = ((double) getWidth() - 2 * padding) / (sus.length - 1);
-      double yScale = (((double) getHeight() - 2 * padding) / (totalPopulation - 1))-1;
+      double yScale = ((double) getHeight() - 2 * padding) / (totalPopulation - 1);
 
       List<Point> susceptiblePoints = new ArrayList<>();
       List<Point> infectedPoints = new ArrayList<>();
@@ -58,12 +58,15 @@ public class GraphicalUI extends JPanel {
       for (int i = 0; i < sus.length; i++) {
          int x1 = (int) (i * xScale + padding);
          int y1 = (int) ((totalPopulation - sus[i]) * yScale + padding);
+         if(y1 > 619) {y1 = 619;}
          susceptiblePoints.add(new Point(x1, y1));
          
          int y2 = (int) ((totalPopulation - infects[i]) * yScale + padding);
+         if(y2 > 619) {y2 = 619;}
          infectedPoints.add(new Point(x1, y2));
          
          int y3 = (int) ((totalPopulation - resists[i]) * yScale + padding);
+         if(y3 > 619) {y3 = 619;}
          resistantPoints.add(new Point(x1, y3));
          
       }
@@ -79,8 +82,6 @@ public class GraphicalUI extends JPanel {
          int x0 = padding;
          int x1 = pointSize + padding;
          int y0 = getHeight() - (((i + 1) * (getHeight() - padding * 2)) / Y_HATCH_CNT + padding);
-         //int y1 = y0;
-         //System.out.println(x0 + " " + y0 + " " + x1 + " " + y1);
          g2.drawLine(x0, y0, x1, y0);
          g2.drawString(popCt, 10, y0+3);
       }
