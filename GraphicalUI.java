@@ -1,4 +1,3 @@
-
 package denguesimulation;
 
 import java.awt.BasicStroke;
@@ -35,7 +34,7 @@ public class GraphicalUI extends JPanel {
     infects = i;
     resists = r;
     
-    JFrame frame = new JFrame("Dengue-Related ABM Epidemic Simulation");
+    JFrame frame = new JFrame("Project_Graph");
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.getContentPane().add(this);
     frame.pack();
@@ -50,7 +49,7 @@ public class GraphicalUI extends JPanel {
       g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
       double xScale = ((double) getWidth() - 2 * padding) / (sus.length - 1);
-      double yScale = ((double) getHeight() - 2 * padding) / (totalPopulation - 1);
+      double yScale = (((double) getHeight() - 2 * padding) / (totalPopulation - 1))-1;
 
       List<Point> susceptiblePoints = new ArrayList<>();
       List<Point> infectedPoints = new ArrayList<>();
@@ -156,4 +155,3 @@ public class GraphicalUI extends JPanel {
      frame.setVisible(true);   
    }
 }
-
