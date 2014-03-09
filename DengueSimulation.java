@@ -114,8 +114,6 @@ public class DengueSimulation {
         double randomProbability = Math.random() * 1;
         //if probability is greater than the probability for infection, person becomes infected
         if(randomProbability > infectionProbability) {
-          Person neighbor = neighbors.get(i);
-          Coordinates nc = neighbor.getCoordinates();
           return true;
         }
       }
