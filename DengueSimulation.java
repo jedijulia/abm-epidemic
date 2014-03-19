@@ -21,13 +21,15 @@ public class DengueSimulation {
     this.currGrid = new Grid(population);
     this.initInfectedPopulation = initInfectedPopulation;
     this.infectionProbability = 1 - infectionProbability; 
-    this.resistanceRate = resistanceRate;
+    this.resistanceRate = resistanceRate-1;
+    if(this.resistanceRate < 0) {this.resistanceRate = 0;}
     this.reservoirProbability = reservoirProbability;
     this.initialize();
   }
   
   //chooses random persons to be the initially infected members of the population
-  public void initialize(){
+  public void initialize(){  
+    System.out.println(population + " " + endTime + " " + prevGrid + " " + currGrid + " " + initInfectedPopulation + " " + infectionProbability + " " + resistanceRate + " " + reservoirProbability);
     for(int i = 0; i < initInfectedPopulation; i++) {
       Random generator = new Random();
       int x = generator.nextInt(prevGrid.getMaxRows());
@@ -44,10 +46,10 @@ public class DengueSimulation {
   //simulates the epidemic's effects on the population per time step
   public void simulate() {
     int currTime = 0;
-    int[] susceptibleCounts = new int[endTime];
-    int[] infectedCounts = new int[endTime];
-    int[] resistantCounts = new int[endTime];
-    
+    int[] susceptibleCounts = new int[endTime+1];
+    int[] infectedCounts = new int[endTime+1];
+    int[] resistantCounts = new int[endTime+1];
+    susceptibleCounts[0] = population; infectedCounts[0] = initInfectedPopulation; resistantCounts[0] = 0;
     //loops through each time step
     while(currTime != endTime) {
       ArrayList<Coordinates> changedPersons = new ArrayList();
@@ -95,13 +97,19 @@ public class DengueSimulation {
       int infectedC = currGrid.getInfectedCount();
       int resistantC = currGrid.getResistantCount();
       
-      susceptibleCounts[currTime] = (susceptibleC);
-      infectedCounts[currTime] = (infectedC);
-      resistantCounts[currTime] = (resistantC);
+      susceptibleCounts[currTime+1] = (susceptibleC);
+      infectedCounts[currTime+1] = (infectedC);
+      resistantCounts[currTime+1] = (resistantC);
       
       currTime++;
     }
     GraphicalUI graph = new GraphicalUI(population, susceptibleCounts, infectedCounts, resistantCounts);
+    
+    int j = 0;
+    for (int i : infectedCounts) {
+      System.out.println("Time step " + j + ": " + i);
+      j++;
+    }
   }  
   
   //checks neighbors and returns true if person will be infected
@@ -114,6 +122,8 @@ public class DengueSimulation {
         double randomProbability = Math.random() * 1;
         //if probability is greater than the probability for infection, person becomes infected
         if(randomProbability > infectionProbability) {
+          Person neighbor = neighbors.get(i);
+          Coordinates nc = neighbor.getCoordinates();
           return true;
         }
       }

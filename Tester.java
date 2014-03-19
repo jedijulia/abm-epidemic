@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 
 package denguesimulation;
 
@@ -35,7 +31,7 @@ public class Tester {
     four.add(infectionProbabilityField);
     Box five = Box.createHorizontalBox();
     five.add(Box.createHorizontalStrut(49));
-    five.add(new JLabel("Resistance Rate: "));
+    five.add(new JLabel("Infection Duration: "));
     five.add(resistanceRateField);
     Box six = Box.createHorizontalBox();
     six.add(Box.createHorizontalStrut(30));
