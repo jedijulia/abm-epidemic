@@ -96,6 +96,7 @@ public class DengueSimulation {
       int infectedC = currGrid.getInfectedCount();
       int resistantC = currGrid.getResistantCount();
       
+      //for graphing purposes
       susceptibleCounts[currTime+1] = (susceptibleC);
       infectedCounts[currTime+1] = (infectedC);
       resistantCounts[currTime+1] = (resistantC);
@@ -115,8 +116,6 @@ public class DengueSimulation {
         double randomProbability = Math.random() * 1;
         //if probability is greater than the probability for infection, person becomes infected
         if(randomProbability > infectionProbability) {
-          Person neighbor = neighbors.get(i);
-          Coordinates nc = neighbor.getCoordinates();
           return true;
         }
       }
