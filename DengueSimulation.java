@@ -21,7 +21,7 @@ public class DengueSimulation {
     this.currGrid = new Grid(population);
     this.initInfectedPopulation = initInfectedPopulation;
     this.infectionProbability = 1 - infectionProbability; 
-    this.resistanceRate = resistanceRate-1;
+    this.resistanceRate = resistanceRate;
     if(this.resistanceRate < 0) {this.resistanceRate = 0;}
     this.reservoirProbability = reservoirProbability;
     this.initialize();
@@ -29,7 +29,6 @@ public class DengueSimulation {
   
   //chooses random persons to be the initially infected members of the population
   public void initialize(){  
-    System.out.println(population + " " + endTime + " " + prevGrid + " " + currGrid + " " + initInfectedPopulation + " " + infectionProbability + " " + resistanceRate + " " + reservoirProbability);
     for(int i = 0; i < initInfectedPopulation; i++) {
       Random generator = new Random();
       int x = generator.nextInt(prevGrid.getMaxRows());
@@ -104,12 +103,6 @@ public class DengueSimulation {
       currTime++;
     }
     GraphicalUI graph = new GraphicalUI(population, susceptibleCounts, infectedCounts, resistantCounts);
-    
-    int j = 0;
-    for (int i : infectedCounts) {
-      System.out.println("Time step " + j + ": " + i);
-      j++;
-    }
   }  
   
   //checks neighbors and returns true if person will be infected
