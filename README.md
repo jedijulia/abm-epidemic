@@ -1,4 +1,4 @@
 abm-epidemic
 ============
 
-agent-based SIR model simulating the spread of an epidemic on a population 
+agent-based SIR model simulating an epidemic's spread on a population
